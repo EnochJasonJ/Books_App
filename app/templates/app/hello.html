@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book App</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+            border-radius: 14px;
+
+        }
+    </style>
+</head>
+<body>
+    {% for post in posts %}
+        <h2>Book: {{post.title}} </h2>
+        <p>Author: {{post.author}} </p>
+        <a href="{% url 'update_post' post.pk %}">Edit Post</a>
+        <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
+    {% endfor %}
+    <a href="{% url 'create_post' %}"> Create a Post </a>
+    
+</body>
+</html>
