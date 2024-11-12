@@ -10,7 +10,7 @@
         }
         a{
             text-decoration: none;
-            color: white;
+            color: rgb(197, 242, 185);
             background-color: black;
             padding-right: 10px;
             padding-left: 10px;
@@ -20,15 +20,38 @@
             border-radius: 14px;
 
         }
+
+        .post {
+            background-color: rgb(197, 242, 185);
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            height: 80px;
+        }
+        .posts {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
-    {% for post in posts %}
-        <h2>Book: {{post.title}} </h2>
-        <p>Author: {{post.author}} </p>
-        <a href="{% url 'update_post' post.pk %}">Edit Post</a>
-        <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
-    {% endfor %}
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post">
+                <h2>Book: {{post.title}} </h2>
+                <p>Author: {{post.author}} </p>
+            </div>
+            <a href="{% url 'update_post' post.pk %}">Edit Post</a>
+            <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
+        {% endfor %}
+    </div>
+    <br>
     <a href="{% url 'create_post' %}"> Create a Post </a>
     
 </body>
